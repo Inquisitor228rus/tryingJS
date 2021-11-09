@@ -1,15 +1,14 @@
-const btnReset = document.getElementById('reset')
-const btnRun = document.getElementById('run')
-const test = document.getElementById('test')
-const ticketNumH = document.getElementById('ticketNumH')
-const ticketNumM = document.getElementById('ticketNumM')
+// сбор новых констант для оперирования из элементов.
+const btnReset = document.getElementById('reset')           // кнопка сброса
+const btnRun = document.getElementById('run')               // кнопка подсчета
+const test = document.getElementById('test')                // элемент подсчета
+const ticketNumH = document.getElementById('ticketNumH')    // элемент поля 1
+const ticketNumM = document.getElementById('ticketNumM')    // элемент поля 2
 
 const workHourse = 480              // часы работы в минутах
-// let workMinutes = 0               // минуты работы
-// let timeHourse = 0
-// let timeMinutes = 0
 
-function addStylesTo(node, text, color = 'black', fontSize) {
+// функция оперирования элементов
+function addStylesTo(node, text, color = 'black', fontSize) { 
     node.textContent = text
     node.style.color = color
     node.style.textAlign = 'left'
@@ -22,7 +21,7 @@ function addStylesTo(node, text, color = 'black', fontSize) {
         node.style.fontSize = fontSize
     }
 }
-
+// оперирование элементами
 btnReset.addEventListener('click',() => {
     // проверка ввода минут
     if (ticketNumM.value < 60) {
