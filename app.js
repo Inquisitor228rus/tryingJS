@@ -13,14 +13,15 @@ function changedText(node, text) {
 }
 // оперирование элементами
 btnReset.addEventListener('click',() => {
+    
     // проверка ввода минут
-    if (ticketNumM.value < 60) {} 
-    else {ticketNumM.value = 59}
+    if (ticketNumM.value > 60) {
+        ticketNumM.value = 59}
     timeMinutes = (workHourse - ticketNumM.value) % 60
 
     // проверка ввода часов
-    if (ticketNumH.value < 8) {}
-    else {ticketNumH.value = 7}
+    if (ticketNumH.value > 8) {
+        ticketNumH.value = 7}
     timeHourse = Math.trunc((workHourse - (ticketNumH.value * 60 + timeMinutes)) / 60)
     
     // текст над полем ввода
