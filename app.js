@@ -12,8 +12,7 @@ function changedText(node, text) {
     node.textContent = text
 }
 // оперирование элементами
-btnReset.addEventListener('click',() => {
-    
+btnRun.addEventListener('click',() => {
     // проверка ввода минут
     if (ticketNumM.value > 60) {
         ticketNumM.value = 59}
@@ -24,10 +23,16 @@ btnReset.addEventListener('click',() => {
         ticketNumH.value = 7}
     timeHourse = Math.trunc((workHourse - (ticketNumH.value * 60 + timeMinutes)) / 60)
     
+    
+    // проверка: часов или часа?
+    if (timeHourse >= 5) {ruHourse = 'часов'}
+    else if (timeHourse == 1) {ruHourse = 'час'}
+    else {ruHourse = 'часа'}
     // текст над полем ввода
-    changedText(test, `Осталось: ${(timeHourse)} часов и ${timeMinutes} минут.`)
+    changedText(test, `Осталось: ${timeHourse} ${ruHourse} и ${timeMinutes} минут.`)
 })
-btnRun.addEventListener('click',() => {
+btnReset.addEventListener('click',() => {
+    // сброс всех значений
     ticketNumH.value = 0
     ticketNumM.value = 0
     timeHourse = 8
