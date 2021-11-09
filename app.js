@@ -11,6 +11,28 @@ const workHourse = 480              // часы работы в минутах
 function changedText(node, text) { 
     node.textContent = text
 }
+
+// функция склонения минут
+function declOfMin(n, minforms) {
+    n = Math.abs(n) % 100
+    let n1 = n % 10
+    if (n > 10 && n < 20) {return minforms[2] }
+    if (n1 > 1 && n1 < 5) {return minforms[1] }
+    if (n1 == 1) {return minforms[0] }
+    return minforms[2]
+}
+
+// функция склонения часов
+function declOfHourse () {
+    if (timeHourse >= 5 || timeHourse == 0) {return hourseForm[0]}
+    if (timeHourse == 1) {return hourseForm[2]}
+    if (timeHourse <= 4) {hourseForm[1]}
+    return hourseForm[1]
+}
+
+const hourseForm = ['часов', 'часа', 'час']         // справочник слов
+const minForms = ['минута', 'минуты', 'минут']      // тоже справочник слов
+
 // оперирование элементами
 btnRun.addEventListener('click',() => {
     // проверка ввода минут
@@ -23,13 +45,9 @@ btnRun.addEventListener('click',() => {
         ticketNumH.value = 7}
     timeHourse = Math.trunc((workHourse - (ticketNumH.value * 60 + timeMinutes)) / 60)
     
-    
-    // проверка: часов или часа?
-    if (timeHourse >= 5) {ruHourse = 'часов'}
-    else if (timeHourse == 1) {ruHourse = 'час'}
-    else {ruHourse = 'часа'}
     // текст над полем ввода
-    changedText(test, `Осталось: ${timeHourse} ${ruHourse} и ${timeMinutes} минут.`)
+    changedText(test, `Осталось: ${timeHourse} ${declOfHourse()} и ${timeMinutes} ${declOfMin(timeMinutes, minForms)}.
+     `)
 })
 btnReset.addEventListener('click',() => {
     // сброс всех значений
