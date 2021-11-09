@@ -8,7 +8,7 @@ const ticketNumM = document.getElementById('ticketNumM')    // элемент п
 const workHourse = 480              // часы работы в минутах
 
 // функция оперирования элементов
-function changedText(node, text, color = 'black', fontSize) { 
+function changedText(node, text) { 
     node.textContent = text
 }
 // оперирование элементами
